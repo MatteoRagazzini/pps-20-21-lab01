@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -23,5 +24,13 @@ public class CircularListTest {
     void testInitiallyEmpty(){
         assertTrue(circularList.isEmpty());
     }
+
+    @Test
+    void testAdd(){
+        circularList.add(1);
+        assertFalse(circularList.isEmpty());
+    }
+
+
 
 }

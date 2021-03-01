@@ -14,13 +14,11 @@ public class CircularListImpl implements CircularList {
         return list.size() == 0;
     }
 
-    // TODO: 01/03/21
-
     public void add(int element) {
-
+        list.add(1);
     }
-    // TODO: 01/03/21
 
+    // TODO: 01/03/21
     public int size() {
         return 0;
     }

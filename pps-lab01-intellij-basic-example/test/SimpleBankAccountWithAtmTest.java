@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SimpleBankAccountWithAtmTest extends  SimpleBankAccountTest{
+class SimpleBankAccountWithAtmTest extends  BankAccountTest<SimpleBankAccountWithAtm>{
 
     @BeforeEach
     void beforeEach(){
@@ -16,22 +16,22 @@ class SimpleBankAccountWithAtmTest extends  SimpleBankAccountTest{
 
     @Test
     void testDepositWithATM(){
-        ((SimpleBankAccountWithAtm)getBankAccount()).depositWithATM(getAccountHolder().getId(), 100);
+        getBankAccount().depositWithATM(getAccountHolder().getId(), 100);
         assertEquals(100 - SimpleBankAccountWithAtm.ATM_FEE, getBankAccount().getBalance());
     }
 
     @Test
     void testWithdrawWithATM(){
-        ((SimpleBankAccountWithAtm)getBankAccount()).depositWithATM(getAccountHolder().getId(), 100);
-        ((SimpleBankAccountWithAtm)getBankAccount()).withdrawWithATM(getAccountHolder().getId(), 50);
-        assertEquals(50-2*SimpleBankAccountWithAtm.ATM_FEE, getBankAccount().getBalance());
+        getBankAccount().depositWithATM(getAccountHolder().getId(), 100);
+        getBankAccount().withdrawWithATM(getAccountHolder().getId(), 50);
+        assertEquals(50 - 2 * SimpleBankAccountWithAtm.ATM_FEE, getBankAccount().getBalance());
     }
 
     @Test
     void testNoMoneyForWithdrawal(){
-        ((SimpleBankAccountWithAtm)getBankAccount()).depositWithATM(getAccountHolder().getId(), 100);
-        ((SimpleBankAccountWithAtm)getBankAccount()).withdrawWithATM(getAccountHolder().getId(), 100);
-        assertEquals(100-SimpleBankAccountWithAtm.ATM_FEE, getBankAccount().getBalance());
+        getBankAccount().depositWithATM(getAccountHolder().getId(), 100);
+        getBankAccount().withdrawWithATM(getAccountHolder().getId(), 100);
+        assertEquals(100 - SimpleBankAccountWithAtm.ATM_FEE, getBankAccount().getBalance());
     }
 
 }

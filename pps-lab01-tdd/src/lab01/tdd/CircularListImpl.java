@@ -18,9 +18,8 @@ public class CircularListImpl implements CircularList {
         list.add(1);
     }
 
-    // TODO: 01/03/21
     public int size() {
-        return 0;
+        return list.size();
     }
 
     // TODO: 01/03/21

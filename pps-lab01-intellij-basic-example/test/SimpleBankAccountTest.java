@@ -9,6 +9,21 @@ import static org.junit.jupiter.api.Assertions.*;
  * The test suite for testing the SimpleBankAccount implementation
  */
 class SimpleBankAccountTest {
+    public AccountHolder getAccountHolder() {
+        return accountHolder;
+    }
+
+    public void setAccountHolder(AccountHolder accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
 
     private AccountHolder accountHolder;
     private BankAccount bankAccount;

@@ -41,7 +41,7 @@ public class CircularListImpl implements CircularList {
 
 
     public Optional<Integer> next(SelectStrategy strategy){
-        while(!strategy.apply(list.get(index)))this.next();
-        return Optional.ofNullable(list.get(index));
+        while(!list.isEmpty() && !strategy.apply(list.get(index))) this.next();
+        return list.isEmpty() ? Optional.empty() : Optional.of(list.get(index));
     }
 }

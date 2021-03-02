@@ -95,6 +95,11 @@ public class CircularListTest {
         assertEquals(2, circularList.next(new EvenStrategy()).orElse(0));
     }
 
+    @Test
+    void testNextWithStrategyWithEmptyList(){
+        assertEquals(Optional.empty(), circularList.next(new EvenStrategy()));
+    }
+
 
 
 

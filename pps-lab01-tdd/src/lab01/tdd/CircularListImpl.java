@@ -39,8 +39,9 @@ public class CircularListImpl implements CircularList {
         this.index = 0;
     }
 
-    // TODO: 01/03/21
-    public Optional<Integer> next(SelectStrategy strategy) {
-        return Optional.empty();
+
+    public Optional<Integer> next(SelectStrategy strategy){
+        while(!strategy.apply(list.get(index)))this.next();
+        return Optional.ofNullable(list.get(index));
     }
 }

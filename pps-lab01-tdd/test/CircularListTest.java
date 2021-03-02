@@ -73,9 +73,18 @@ public class CircularListTest {
         assertEquals(1, (circularList.next().orElse(0)));
         assertEquals(1, (circularList.previous().orElse(0)));
         assertEquals(3, (circularList.previous().orElse(0)));
-
     }
 
+    @Test
+    void testReset(){
+        circularList.add(1);
+        circularList.add(2);
+        circularList.add(3);
+        assertEquals(1, circularList.next().orElse(0));
+        assertEquals(2, circularList.next().orElse(0));
+        circularList.reset();
+        assertEquals(1, circularList.next().orElse(0));
+    }
 
 
 

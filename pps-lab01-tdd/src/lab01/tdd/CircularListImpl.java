@@ -34,9 +34,9 @@ public class CircularListImpl implements CircularList {
         return list.isEmpty() ? Optional.empty() : Optional.of(list.get(index));
     }
 
-    // TODO: 01/03/21
-    public void reset() {
 
+    public void reset() {
+        this.index = 0;
     }
 
     // TODO: 01/03/21

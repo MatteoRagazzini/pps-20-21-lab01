@@ -23,16 +23,17 @@ public class CircularListImpl implements CircularList {
     }
 
     public Optional<Integer> next() {
-
-        Optional<Integer> next = Optional.of(list.get(index));
+        Optional<Integer> next = list.isEmpty() ?
+                Optional.empty() : Optional.of(list.get(index));
         index = (list.size() - 1) == index ? 0 : index + 1;
         return next;
     }
 
     public Optional<Integer> previous() {
-        int previous = index == 0 ? list.size() - 1 : index - 1;
-        System.out.println(list.size() -1);
-        return Optional.of(list.get(previous));
+
+        index = (index == 0) ? list.size() - 1 : index - 1;
+        // consistency check to avoid IndexOutOfBound
+        return list.isEmpty() ? Optional.empty() : Optional.of(list.get(index));
     }
 
     // TODO: 01/03/21

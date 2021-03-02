@@ -1,14 +1,12 @@
 package lab01.tdd;
 
-import lab01.tdd.CircularList;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class CircularListImpl implements CircularList {
     private int index = 0;
-    private List<Integer> list = new ArrayList<Integer>();
+    private final List<Integer> list = new ArrayList<>();
 
     public boolean isEmpty() {
         return list.size() == 0;

@@ -1,11 +1,7 @@
 import lab01.tdd.CircularList;
 import lab01.tdd.CircularListImpl;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.text.html.Option;
 
 import java.util.Optional;
 
@@ -45,9 +41,9 @@ public class CircularListTest {
     void testNext(){
         circularList.add(1);
         circularList.add(2);
-        assertEquals(1, circularList.next().get());
-        assertEquals(2, circularList.next().get());
-        assertEquals(1, circularList.next().get());
+        assertEquals(1, circularList.next().orElse(0));
+        assertEquals(2, circularList.next().orElse(0));
+        assertEquals(1, circularList.next().orElse(0));
     }
 
     @Test
@@ -60,8 +56,8 @@ public class CircularListTest {
     void testPrevious(){
         circularList.add(1);
         circularList.add(2);
-        assertEquals(2, circularList.previous().get());
-        assertEquals(1, circularList.previous().get());
+        assertEquals(2, circularList.previous().orElse(0));
+        assertEquals(1, circularList.previous().orElse(0));
     }
 
     @Test
@@ -74,9 +70,10 @@ public class CircularListTest {
         circularList.add(1);
         circularList.add(2);
         circularList.add(3);
-        assertEquals(1, circularList.next().get());
-        assertEquals(1, circularList.previous().get());
-        assertEquals(3, circularList.previous().get());
+        assertEquals(1, (circularList.next().orElse(0)));
+        assertEquals(1, (circularList.previous().orElse(0)));
+        assertEquals(3, (circularList.previous().orElse(0)));
+
     }
 
 

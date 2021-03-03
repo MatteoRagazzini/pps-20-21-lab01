@@ -2,6 +2,7 @@ import lab01.tdd.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CircularListTest {
 
     CircularList circularList;
+    StrategyFactory factory = new StrategyFactory();
 
     @BeforeEach
     void beforeEach(){
@@ -90,22 +92,24 @@ public class CircularListTest {
         circularList.add(1);
         circularList.add(2);
         circularList.add(3);
-        assertEquals(2, circularList.next(new EvenStrategy()).orElse(0));
+        assertEquals(2, circularList.next(factory.makeEvenStrategy()).orElse(0));
 
         circularList.reset();
 
-        assertEquals(3, circularList.next(new MultipleOfStrategy(3)).orElse(0));
+        assertEquals(3, circularList.next(factory.makeMultipleOfStrategy(3)).orElse(0));
 
         circularList.reset();
 
-        assertEquals(1, circularList.next(new EqualsStrategy(1)).orElse(0));
+        assertEquals(1, circularList.next(factory.makeEqualsStrategy(1)).orElse(0));
     }
 
     @Test
     void testNextWithStrategyWithEmptyList(){
-        assertEquals(Optional.empty(), circularList.next(new EvenStrategy()));
-        assertEquals(0, circularList.next(new MultipleOfStrategy(5)).orElse(0));
-        assertEquals(0, circularList.next(new EqualsStrategy(5)).orElse(0));
+        circularList.add(1);
+        circularList.add(3);
+        assertEquals(Optional.empty(), circularList.next(factory.makeEvenStrategy()));
+        assertEquals(Optional.empty(), circularList.next(factory.makeMultipleOfStrategy(5)));
+        assertEquals(Optional.empty(), circularList.next(factory.makeEqualsStrategy(5)));
     }
 
 

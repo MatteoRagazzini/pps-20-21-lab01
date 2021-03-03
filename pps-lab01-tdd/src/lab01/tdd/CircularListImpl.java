@@ -40,13 +40,13 @@ public class CircularListImpl implements CircularList {
     }
 
 
-    public Optional<Integer> next(SelectStrategy strategy){
+    public Optional<Integer> next(SelectStrategy strategy) {
         // To avoid infinite loop
-        int counter = 0;
-        while(counter != list.size() && !list.isEmpty() && !strategy.apply(list.get(index))){
-            counter++;
+        for (int i = 0; i < list.size(); i++) {
+            if (strategy.apply(list.get(index))) return Optional.of(list.get(index));
             this.next();
         }
-        return list.isEmpty() ? Optional.empty() : Optional.of(list.get(index));
+
+        return Optional.empty();
     }
 }

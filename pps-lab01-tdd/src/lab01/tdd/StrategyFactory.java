@@ -3,13 +3,13 @@ package lab01.tdd;
 public class StrategyFactory {
 
     public SelectStrategy makeEvenStrategy(){
-        return new EvenStrategy();
+        return (e) -> e % 2 == 0;
     }
     public SelectStrategy makeMultipleOfStrategy(int number){
-        return new MultipleOfStrategy(number);
+        return (e) -> e % number == 0;
     }
 
-    public SelectStrategy makeEqualsStrategy(int number){
-        return new EqualsStrategy(number);
+    public SelectStrategy makeEqualsStrategy(final int number){
+        return (e) -> e == number;
     }
 }
